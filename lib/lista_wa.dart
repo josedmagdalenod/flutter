@@ -19,6 +19,28 @@ class ListaChatsScreen extends StatelessWidget {
       },
       {'name': 'Faisal Valencia', 'message': 'Me pasas el código por favor.', 'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
       },
+      // {'name': 'Abu Ali Socio','message': '¡Hola! ¿Cómo va el proyecto de Flutter?',
+      //   'time': '12:45 PM','avatar': 'https://via.placeholder.com/150',
+      // },
+      // {'name': 'Maikel Traki', 'message': 'Nos vemos mañana a las 10:00 AM.',
+      //   'time': '11:20 AM','avatar': 'https://via.placeholder.com/150',
+      // },
+      // {'name': 'Wagih', 'message': 'Tu solicitud ha sido procesada con éxito.',
+      //   'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
+      // },
+      // {'name': 'Faisal Valencia', 'message': 'Me pasas el código por favor.', 'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
+      // },
+      //  {'name': 'Abu Ali Socio','message': '¡Hola! ¿Cómo va el proyecto de Flutter?',
+      //   'time': '12:45 PM','avatar': 'https://via.placeholder.com/150',
+      // },
+      // {'name': 'Maikel Traki', 'message': 'Nos vemos mañana a las 10:00 AM.',
+      //   'time': '11:20 AM','avatar': 'https://via.placeholder.com/150',
+      // },
+      // {'name': 'Wagih', 'message': 'Tu solicitud ha sido procesada con éxito.',
+      //   'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
+      // },
+      // {'name': 'Faisal Valencia', 'message': 'Me pasas el código por favor.', 'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
+      // },
     ];
 
     return Scaffold(
@@ -64,7 +86,7 @@ class ListaChatsScreen extends StatelessWidget {
                 return ListTile(
                   // Avatar o foto de perfil circular a la izquierda
                   leading: CircleAvatar(
-                    backgroundColor: Colors.grey.shade800,
+                    backgroundColor: Color.fromARGB(255, 94, 17, 201),
                     child: Text(
                       chat['name']![0], // Muestra la inicial del contacto
                       style: const TextStyle(color: Colors.white),
