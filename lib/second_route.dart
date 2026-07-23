@@ -21,7 +21,6 @@ class SecondRoute extends StatelessWidget {
         body: const TabBarView(
           children: [
               Icon(Icons.all_inbox, color: Colors.white),
-              Icon(Icons.check, color: Colors.white),
               Icon(Icons.mark_as_unread, color: Colors.white),
           ]),
           bottomNavigationBar: Padding(
@@ -31,7 +30,6 @@ class SecondRoute extends StatelessWidget {
               child: const TabBar(
                 tabs:[
                   Tab(icon: Icon(Icons.all_inbox)),
-                  Tab(icon: Icon(Icons.check)),
                   Tab(icon: Icon(Icons.mark_as_unread_outlined)),
                 ],
                 labelColor: Color.fromARGB(255, 59, 75, 226),
@@ -43,18 +41,5 @@ class SecondRoute extends StatelessWidget {
 
       ))
     );
-      // appBar: AppBar(
-      //   title: const Text('SecondRoute'),
-      // ),
-      // body: Center(
-      //   child: ElevatedButton(
-      //     onPressed: () {
-      //       // Esto te regresa a la pantalla anterior
-      //       Navigator.pop(context);
-      //     },
-      //     child: const Text('Regresar'),
-      //   ),
-      // ),
-    // );
   }
 }

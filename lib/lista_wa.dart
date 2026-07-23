@@ -8,126 +8,123 @@ class ListaChatsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Lista de datos de ejemplo para los chats
     final List<Map<String, String>> chats = [
-      {'name': 'Abu Ali Socio','message': '¡Hola! ¿Cómo va el proyecto de Flutter?',
-        'time': '12:45 PM','avatar': 'https://via.placeholder.com/150',
+      {
+        'name': 'Abu Ali Socio',
+        'message': '¡Hola! ¿Cómo va el proyecto de Flutter?',
+        'time': '12:45 PM',
+        'avatar': 'https://via.placeholder.com/150',
       },
-      // {'name': 'Maikel Traki', 'message': 'Nos vemos mañana a las 10:00 AM.',
-      //   'time': '11:20 AM','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Wagih', 'message': 'Tu solicitud ha sido procesada con éxito.',
-      //   'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Faisal Valencia', 'message': 'Me pasas el código por favor.', 'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Abu Ali Socio','message': '¡Hola! ¿Cómo va el proyecto de Flutter?',
-      //   'time': '12:45 PM','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Maikel Traki', 'message': 'Nos vemos mañana a las 10:00 AM.',
-      //   'time': '11:20 AM','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Wagih', 'message': 'Tu solicitud ha sido procesada con éxito.',
-      //   'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Faisal Valencia', 'message': 'Me pasas el código por favor.', 'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
-      // },
-      //  {'name': 'Abu Ali Socio','message': '¡Hola! ¿Cómo va el proyecto de Flutter?',
-      //   'time': '12:45 PM','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Maikel Traki', 'message': 'Nos vemos mañana a las 10:00 AM.',
-      //   'time': '11:20 AM','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Wagih', 'message': 'Tu solicitud ha sido procesada con éxito.',
-      //   'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
-      // },
-      // {'name': 'Faisal Valencia', 'message': 'Me pasas el código por favor.', 'time': 'Ayer','avatar': 'https://via.placeholder.com/150',
-      // },
+      // Puedes descomentar o agregar más chats aquí
     ];
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-        title: const Text('        Crypchange'),
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 30.0,
-        ),
-      ),
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: TextField(
-             style: const TextStyle(color: Colors.white),
-             decoration: InputDecoration(
-              hintText: 'Buscar',
-              hintStyle: TextStyle(color: Colors.white),
-              prefixIcon: const Icon(Icons.search, color: Colors.white),
-              filled: true,
-              fillColor: const Color.fromARGB(255, 25, 25, 25),
-              contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25.0),
-                borderSide: BorderSide.none,
+    // Widget para la lista de chats de la primera pestaña
+    Widget buildChatList() {
+      return ListView.builder(
+        itemCount: chats.length,
+        itemBuilder: (context, index) {
+          final chat = chats[index];
+          return ListTile(
+            leading: CircleAvatar(
+              backgroundColor: const Color.fromARGB(255, 94, 17, 201),
+              child: Text(
+                chat['name']![0],
+                style: const TextStyle(color: Colors.white),
               ),
-             ),
-            //  onChanged: (value){
-            //   },
-            ), 
+            ),
+            title: Text(
+              chat['name']!,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              chat['message']!,
+              style: const TextStyle(color: Colors.grey),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            trailing: Text(
+              chat['time']!,
+              style: const TextStyle(color: Colors.grey, fontSize: 12),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatDetailScreen(
+                    contactName: chat['name']!,
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      );
+    }
+
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        appBar: AppBar(
+          title: const Padding(
+            padding: EdgeInsets.only(top: 8.0), 
+            child: Text('        Crypchange'),
+          ), 
+          titleTextStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 30.0,
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: chats.length,
-              itemBuilder: (context, index) {
-                final chat = chats[index];
-                return ListTile(
-                  // Avatar o foto de perfil circular a la izquierda
-                  leading: CircleAvatar(
-                    backgroundColor: Color.fromARGB(255, 94, 17, 201),
-                    child: Text(
-                      chat['name']![0], // Muestra la inicial del contacto
-                      style: const TextStyle(color: Colors.white),
-                    ),
+          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+          iconTheme: const IconThemeData(color: Colors.white),
+        ),
+        // Colocamos el buscador en el cuerpo principal para que sea fijo en todas las pestañas
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 15.0),
+               child: TextField(
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintText: 'Buscar',
+                  hintStyle: const TextStyle(color: Colors.white),
+                  prefixIcon: const Icon(Icons.search, color: Colors.white),
+                  filled: true,
+                  fillColor: const Color.fromARGB(255, 25, 25, 25),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 0.8000),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide.none,
                   ),
-                  // Nombre del contacto
-                  title: Text(
-                    chat['name']!,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  // Último mensaje
-                  subtitle: Text(
-                    chat['message']!,
-                    style: const TextStyle(color: Colors.grey),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis, // Corta el texto largo con puntos suspensivos
-                  ),
-                  // Hora del mensaje a la derecha
-                  trailing: Text(
-                    chat['time']!,
-                    style: const TextStyle(color: Colors.grey, fontSize: 12),
-                  ),
-                  // Acción al hacer clic en un chat específico
-                  onTap: () {
-                    Navigator.push(
-                     context,
-                     MaterialPageRoute(
-                     builder: (context) => ChatDetailScreen(
-                      contactName: chat['name']!,
-                      ),
-                     ),
-                    );
-                  },
-                );
-              },
+                ),
+              ),
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  buildChatList(), // Pestaña 1: Lista de chats
+                  const Center(child: Icon(Icons.mark_as_unread, color: Colors.white, size: 50)), // Pestaña 2
+                ],
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(26.0),
+          child: Container(
+            color: const Color.fromARGB(255, 0, 0, 0),
+            child: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.all_inbox)),
+                Tab(icon: Icon(Icons.mark_as_unread_outlined)),
+              ],
+              labelColor: Color.fromARGB(255, 59, 75, 226),
+              unselectedLabelColor: Colors.white,
+              indicatorColor: Color.fromARGB(255, 59, 75, 226),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
