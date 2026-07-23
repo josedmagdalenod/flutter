@@ -120,14 +120,25 @@ class MyHomePage extends StatelessWidget {
                 child: const Text('Iniciar sesión'),
               ),
               const SizedBox(height: 8),
-              const Text(
-                "Olvide Contraseña",
-                style: TextStyle(color: Color.fromARGB(255, 66, 64, 64)),
-              ),
+              Password(),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class Password extends StatelessWidget {
+  const Password({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text(
+      "Olvide Contraseña",
+      style: TextStyle(color: Color.fromARGB(255, 66, 64, 64)),
     );
   }
 }
