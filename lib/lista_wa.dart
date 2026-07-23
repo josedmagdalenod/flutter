@@ -14,6 +14,12 @@ class ListaChatsScreen extends StatelessWidget {
         'time': '12:45 PM',
         'avatar': 'https://via.placeholder.com/150',
       },
+      {
+        'name': 'Abu Ali Socio',
+        'message': '¡Hola! ¿Cómo va el proyecto de Flutter?',
+        'time': '12:45 PM',
+        'avatar': 'https://via.placeholder.com/150',
+      },
       // Puedes descomentar o agregar más chats aquí
     ];
 
