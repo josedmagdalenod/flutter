@@ -11,13 +11,6 @@ class SecondRoute extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
         appBar: AppBar(
-          // bottom: const TabBar(
-          //   tabs: [
-          //     Tab(icon: Icon(Icons.all_inbox)),
-          //     Tab(icon: Icon(Icons.pending)),
-          //     Tab(icon: Icon(Icons.read_more)),
-          //   ], 
-          // ),
           title: const Text('  Chats'),
           titleTextStyle: const TextStyle(
             color: Colors.white,
