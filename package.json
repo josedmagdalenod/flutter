@@ -15,7 +15,18 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "pg": "^8.22.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josedmagdalenod/flutter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/josedmagdalenod/flutter/issues"
+  },
+  "homepage": "https://github.com/josedmagdalenod/flutter#readme"
 }

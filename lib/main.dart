@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'http_service.dart';
 // import 'second_route.dart';
 import 'lista_wa.dart';
 
@@ -10,7 +11,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -32,7 +32,33 @@ class MyAppState extends ChangeNotifier {}
 
 class MyHomePage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  // 1. Agregamos los controladores para capturar el texto de los inputs
+  final TextEditingController _usuarioController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   MyHomePage({super.key});
+   
+   Future<void> _manejarLogin(BuildContext context) async {
+    final resultado = await HttpService.loginN8n(
+      _usuarioController.text.trim(),
+      _passwordController.text.trim(),
+    );
+    if (!context.mounted) return;
+    if (resultado != null) {
+      // Si n8n responde bien (200), navegamos a la lista de chats
+      Navigator.push(
+        context,
+        MaterialPageRoute<void>(
+          builder: (context) => const ListaChatsScreen(),
+        ),
+      );
+    } else {
+      // Si las credenciales fallan o hay error de red
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Usuario o contraseña incorrectos')),
+      );
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +79,7 @@ class MyHomePage extends StatelessWidget {
               SizedBox(
                 width: 300.0,
                 child: TextFormField(
+                  controller: _usuarioController,
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   decoration: const InputDecoration(
@@ -76,6 +103,7 @@ class MyHomePage extends StatelessWidget {
               SizedBox(
                 width: 300.0,
                 child: TextFormField(
+                  controller: _passwordController,
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   decoration: const InputDecoration(
@@ -100,12 +128,13 @@ class MyHomePage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (context) => const ListaChatsScreen(),
-                      )
-                    );
+                    _manejarLogin(context);
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute<void>(
+                    //     builder: (context) => const ListaChatsScreen(),
+                    //   )
+                    // );
                   }
                 },
                 style: ElevatedButton.styleFrom( 

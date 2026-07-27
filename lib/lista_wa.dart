@@ -15,7 +15,7 @@ class ListaChatsScreen extends StatelessWidget {
         'avatar': 'https://via.placeholder.com/150',
       },
       {
-        'name': 'Abu Ali Socio',
+        'name': 'Wagih',
         'message': '¡Hola! ¿Cómo va el proyecto de Flutter?',
         'time': '12:45 PM',
         'avatar': 'https://via.placeholder.com/150',
