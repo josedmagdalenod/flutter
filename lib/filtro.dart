@@ -1,4 +1,4 @@
-// lib/filtro.dart
+
 
 class FiltroChats {
   static List<Map<String, String>> aplicar(

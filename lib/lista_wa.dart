@@ -13,6 +13,26 @@ class ListaChatsScreen extends StatefulWidget {
 class _ListaChatsScreenState extends State<ListaChatsScreen> {
   Future<List<dynamic>> _futureMensajes = HttpService.getMensajes();
   String _ultimaBusqueda = '';
+    final List<dynamic> _listaQuemada = [
+    {
+      'name_group': 'Crypto Market',
+      'contenido': 'Bitcoin subió 3% esta mañana',
+      'moneda': 'BTC',
+      'fecha': '2026-07-29 09:15:00',
+    },
+    {
+      'name_group': 'Trading Group',
+      'contenido': 'Nueva señal de compra para ETH',
+      'moneda': 'ETH',
+      'fecha': '2026-07-29 08:40:00',
+    },
+    {
+      'name_group': 'Inversores',
+      'contenido': 'Solana se mantiene estable',
+      'moneda': 'SOL',
+      'fecha': '2026-07-29 07:20:00',
+    },
+  ];
 
   @override
   void initState() {
